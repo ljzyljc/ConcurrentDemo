@@ -1,5 +1,7 @@
 ### Lock和Condition
 
+Java SDK 并发包里的Lock和Condition不过就是管程的一种实现而已
+
 1.死锁问题中破坏不可抢占条件，sychroinzed没有办法解决。
 
 三种解决方案：
@@ -28,3 +30,33 @@
     2.永远只在访问可变的成员变量时加锁
 
     3.永远不再调用其他对象的方法是加锁
+
+
+
+Condition
+    Condition实现了管程模型里面的条件变量
+
+
+Lock和Condition实现的管程，线程等待和通知需要调用await(),signal(),signalAll(),
+    语义和wait(),notify(),notifyAll() 相同
+
+
+异步转同步
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
