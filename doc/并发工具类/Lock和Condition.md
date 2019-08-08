@@ -36,7 +36,7 @@ Java SDK 并发包里的Lock和Condition不过就是管程的一种实现而已
 Condition
     Condition实现了管程模型里面的条件变量
 
-1.使用Condition实现一个阻塞队列
+1.使用Condition实现一个阻塞队列（如何利用两个条件变量快速实现一个阻塞队列）
 2.Dubbo源码分析（异步转同步的实现方式，RPC请求）
 
 Lock和Condition实现的管程，线程等待和通知需要调用await(),signal(),signalAll(),
