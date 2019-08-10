@@ -14,3 +14,23 @@ ReentrantReadWriteLock锁的升级是不允许的，降级是可以的
 读写锁类似于ReadWriteLock,也支持公平模式和非公平模式，但是需要注意的是，那就是只有写锁支持条件变量，
 
 读锁是不要条件变量的，读锁调用newCondition()会抛出UnsupportedOperationException异常。
+
+```final StampedLock sl = new StampedLock();
+           
+           //获取/释放悲观读锁示意代码
+           long stamp = sl.readLock();
+           try{
+               //省略相关业务代码
+           }finally {
+               sl.unlock(stamp);
+           }
+           
+           //获取/释放写锁示意代码
+           long stampd = sl.writeLock();
+           try{
+               //省略相关业务代码
+           }finally {
+               sl.unlock(stampd);
+           }
+           
+           
