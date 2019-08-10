@@ -42,6 +42,37 @@ public class StampedLockTest {
     }
 
 
+    private static int x,y;
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    //计算到原点的距离
+    public static double distanceFromOrigin(){
+        final StampedLock sl = new StampedLock();
+
+        //乐观读
+        long stamp = sl.tryOptimisticRead();
+        //读入局部变量
+        //读的过程数据可能被修改
+        int currX = x;
+        int currY = y;
+
+        //判断执行读操作期间，是否存在些操作，如果存在，则sl.validate返回false
+        if (!sl.validate(stamp)){
+            //升级为悲观读锁
+            stamp = sl.readLock();
+            try{
+                currX = x;
+                currY = y;
+            }finally {
+                //释放悲观读锁
+                sl.unlock(stamp);
+            }
+        }
+        return Math.sqrt(currX*currX+currY*currY);
+    }
+
+
+
+
 
 
 }
