@@ -30,6 +30,9 @@ public class CompletionServiceTest {
 
     //Dubbo中有一种叫做Forking的集群模式，这种集群模式下，支持并行的调用多个查询服务，只要有一个成功返回，整个服务就可以返回了
 
+    //CompletionService的实现ExecutorCompletionService需要你自己创建线程池，虽然看上去有点啰嗦，但是好处是你可以让多个ExecutorCompletionService
+    //线程池隔离，这种隔离能够避免几个特别耗时的任务拖垮整个应用的风险。
+
     public static int test2(){
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
