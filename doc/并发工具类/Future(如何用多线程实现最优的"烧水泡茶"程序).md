@@ -116,3 +116,7 @@ FutureTask实现了Runnable接口和Future接口，所以可以直接被ThreadPo
                 }
         
             }
+            
+烧水泡茶程序
+
+    用了两个FutureTask来时实现，一个里面Future的Callable里面传入另一个FutrueTask,ft2.get(),最后ft1.get()
